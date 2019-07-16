@@ -12,11 +12,16 @@ The design mockups were created in [Figma](https://www.figma.com)
 ![Design](https://github.com/xamcat/xam-twitch/blob/master/Zimmer%20Design.png)
 
 ## Prep
-### Readme/Documentation (Dean)
-### Github package for mobcat-library (Sweeky)
-### Setup CI/CD (Sweeky)
-### Assets (Sweeky)
-### UX Prototype (Ben) [Add link here when complete]
+- Readme/Documentation (Dean)
+    - Update readme & documentation as we progress
+- Github package for mobcat-library (Sweeky)
+    - Create package for consuming within Zimmer
+- Setup CI/CD (Sweeky)
+    - Implement repo protection, validation, and build pipeline
+- Assets (Sweeky)
+    - Create/provide assets 
+- UX Prototype (Ben)
+    - Create UX prototype & design mockup
 
 
 ## Episodes
