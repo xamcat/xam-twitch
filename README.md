@@ -4,10 +4,16 @@
 https://www.twitch.tv/ is in their own words:
 >"a global community of millions who come together each day to create their own entertainment: unique, live, unpredictable, never-to-be repeated experiences created by the magical interactions of the many. With chat built into every stream, you don’t just watch on Twitch, you’re a part of the show."
 
-## MobCAT Sample
+## MobCAT Sample (Codename Zimmer)
 The goal of the MobCAT sample is to build a Twitch app via live-coding on Twitch using the latest and greatest in Xamarin.Forms with the MobCAT Toolbox to demonstrate the thought process in using best practices for common use cases. After the app is built, we will also be profiling the app to demonstrate common profiling scenarios.
 
+## Design
+The design mockups were created in [Figma](https://www.figma.com)
+![Design](https://github.com/xamcat/xam-twitch/blob/master/Zimmer%20Design.png)
+
 ## Prep
+### Readme/Documentation (Dean)
+### Github package for mobcat-library (Sweeky)
 ### Setup CI/CD (Sweeky)
 ### Assets (Sweeky)
 ### UX Prototype (Ben) [Add link here when complete]
