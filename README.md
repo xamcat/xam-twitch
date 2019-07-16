@@ -14,6 +14,7 @@ The design mockups were created in [Figma](https://www.figma.com)
 ## Prep
 - Readme/Documentation (Dean)
     - Update readme & documentation as we progress
+- Generate Twitch API key (Dean)
 - Github package for mobcat-library (Sweeky)
     - Create package for consuming within Zimmer
 - Setup CI/CD (Sweeky)
