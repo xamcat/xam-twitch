@@ -17,10 +17,10 @@ echo "Environment '$APP_ENVIRONMENT'"
 
 # Variables
 APP_ENVIRONMENT=$(echo $APP_ENVIRONMENT | tr '[:upper:]' '[:lower:]' | sed "s/_/./g")
-MANIFEST_FILE=$PWD/samples/MobCATOrNot/MobCATOrNot.Android/Properties/AndroidManifest.xml
-INFO_PLIST=$PWD/samples/MobCATOrNot/MobCATOrNot.iOS/Info.plist
-IOS_ICONS=$PWD/samples/MobCATOrNot/MobCATOrNot.iOS/Assets.xcassets/AppIcon.appiconset/
-ANDROID_ICONS=$PWD/samples/MobCATOrNot/MobCATOrNot.Android/Resources/
+MANIFEST_FILE=$PWD/<path to Android Manifest file>
+INFO_PLIST=$PWD/<path to iOS Info.plist file>
+IOS_ICONS=$PWD/<path to iOS Iconset>
+ANDROID_ICONS=$PWD/<path to Android Resources folder>
 TARGET_ANDROID_ICONS=$PWD/Android/$APP_ENVIRONMENT/.
 TARGET_IOS_ICONS=$PWD/iOS/$APP_ENVIRONMENT/AppIcon.appiconset/.
 

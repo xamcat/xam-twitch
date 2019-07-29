@@ -80,14 +80,14 @@ stages:
       displayName: 'Update Version'
       inputs:
         targetType: filePath
-        filePath: samples/MobCATOrNot/build/version.sh
+        filePath: build/version.sh
         arguments: '-b $(Build.BuildID) -e $(AppEnv)'
 
     - task: Bash@3
       displayName: 'Update App Secrets'
       inputs:
         targetType: filePath
-        filePath: samples/MobCATOrNot/build/appsecrets.sh
+        filePath: build/appsecrets.sh
       enabled: "false"
 
     - task: NuGetToolInstaller@1
@@ -103,14 +103,14 @@ stages:
     - task: InstallAppleCertificate@2
       displayName: 'Install an Apple certificate'
       inputs:
-        certSecureFile: '80e22aef-d9fc-4fbe-b54c-0c7c6b3d89e4'
+        certSecureFile: '<Certficate name>'
         certPwd: '$(P12password)'
       enabled: "false"
 
     - task: InstallAppleProvisioningProfile@1
       displayName: 'Install an Apple provisioning profile'
       inputs:
-        provProfileSecureFile: '6b20ba66-b034-4f7d-9f97-2fd2746934ef'
+        provProfileSecureFile: '<Provisioning Profile Name>'
       enabled: "false"
 
     - task: MSBuild@1
