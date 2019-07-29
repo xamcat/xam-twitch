@@ -1,0 +1,122 @@
+#REMEMBER TO SET PIPELINE VARIBALES 
+#BuildConfiguration - Release
+#AppEnv - prod
+
+stages:
+- stage: UnitTests
+  jobs:
+  - job: UnitTests
+    displayName: Run Unit Tests
+    pool:
+      name: Hosted VS2017
+      demands:
+      - msbuild
+      - vstest
+
+    steps:
+    - script: echo Run UnitTests Stage!
+
+- stage: BuildXamarinAndroid
+  dependsOn: UnitTests    # this stage runs after Test
+  jobs:
+  - job: BuildXamarinAndroid
+    displayName: Build Xamarin Android
+    pool:
+      name: Hosted macOS
+      demands:
+      - MSBuild
+      - Xamarin.Android
+      
+    steps:
+    - script: echo Build Xamarin Android Stage!
+
+    - task: Bash@3
+      displayName: 'Update Version'
+      inputs:
+        targetType: filePath
+        filePath: build/version.sh
+        arguments: '-b $(Build.BuildID) -e $(AppEnv)'
+
+    - task: Bash@3
+      displayName: 'Update App Secrets'
+      inputs:
+        targetType: filePath
+        filePath: build/appsecrets.sh
+      enabled: "false"
+
+    - task: NuGetToolInstaller@1
+      displayName: Use Nuget 5.0.2
+      inputs:
+        versionSpec: '5.0.2'
+
+    - task: NuGetCommand@2
+      displayName: 'NuGet restore'
+      inputs:
+        restoreSolution: <path to sln>
+
+    - task: XamarinAndroid@1
+      displayName: 'Build Xamarin.Android App'
+      inputs:
+        projectFile: <path to Android csproj >
+        configuration: '$(BuildConfiguration)'
+        createAppPackage: false
+
+- stage: BuildXamariniOS
+  dependsOn: UnitTests    # this stage runs in parallel with DeployUS1, after Test 
+  jobs:
+  - job: BuildXamariniOS
+    displayName: Build Xamarin iOS
+    pool:
+      name: Hosted macOS
+      demands:
+      - xcode
+      - Xamarin.iOS
+      - msbuild
+
+    steps:
+    - script: echo Build Xamarin iOS Stage!
+
+    - task: Bash@3
+      displayName: 'Update Version'
+      inputs:
+        targetType: filePath
+        filePath: samples/MobCATOrNot/build/version.sh
+        arguments: '-b $(Build.BuildID) -e $(AppEnv)'
+
+    - task: Bash@3
+      displayName: 'Update App Secrets'
+      inputs:
+        targetType: filePath
+        filePath: samples/MobCATOrNot/build/appsecrets.sh
+      enabled: "false"
+
+    - task: NuGetToolInstaller@1
+      displayName: Use Nuget 5.0.2
+      inputs:
+        versionSpec: '5.0.2'
+
+    - task: NuGetCommand@2
+      displayName: 'NuGet restore'
+      inputs:
+        restoreSolution: <path to sln>
+    
+    - task: InstallAppleCertificate@2
+      displayName: 'Install an Apple certificate'
+      inputs:
+        certSecureFile: '80e22aef-d9fc-4fbe-b54c-0c7c6b3d89e4'
+        certPwd: '$(P12password)'
+      enabled: "false"
+
+    - task: InstallAppleProvisioningProfile@1
+      displayName: 'Install an Apple provisioning profile'
+      inputs:
+        provProfileSecureFile: '6b20ba66-b034-4f7d-9f97-2fd2746934ef'
+      enabled: "false"
+
+    - task: MSBuild@1
+      displayName: 'Build  Xamarin.iOS App'
+      inputs:
+        solution: <path to sln or iOS csproj>
+        platform: iPhoneSimulator
+        configuration: '$(BuildConfiguration)'
+        # msbuildArguments: '/p:BuildIpa=true'

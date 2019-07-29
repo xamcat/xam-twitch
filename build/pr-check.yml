@@ -1,0 +1,62 @@
+# REMEMBER TO SETUP FOLLOWING PIPELINE VARIABLES :
+# BuildConfiguration
+
+stages:
+- stage: BuildXamarinAndroid
+  jobs:
+  - job: BuildXamarinAndroid
+    displayName: Build Xamarin Android
+    pool:
+      name: Hosted macOS
+      demands:
+      - MSBuild
+      - Xamarin.Android
+      
+    steps:
+    - script: echo Build Xamarin Android Stage!
+
+    - task: NuGetToolInstaller@1
+      displayName: Use Nuget 5.0.2
+      inputs:
+        versionSpec: '5.0.2'
+
+    - task: NuGetCommand@2
+      displayName: 'NuGet restore'
+      inputs:
+        restoreSolution: <path to sln file> #yaml runs from root folder of repo
+
+    - task: XamarinAndroid@1
+      displayName: 'Build Xamarin.Android App'
+      inputs:
+        projectFile: <path to Android csproj> #yaml runs from root folder of repo
+        configuration: '$(BuildConfiguration)'
+        createAppPackage: false
+
+  - job: BuildXamariniOS
+    displayName: Build Xamarin iOS
+    pool:
+      name: Hosted macOS
+      demands:
+      - xcode
+      - Xamarin.iOS
+      - msbuild
+
+    steps:
+    - script: echo Build Xamarin iOS Stage!
+
+    - task: NuGetToolInstaller@1
+      displayName: Use Nuget 5.0.2
+      inputs:
+        versionSpec: '5.0.2'
+
+    - task: NuGetCommand@2
+      displayName: 'NuGet restore'
+      inputs:
+        restoreSolution: <path to sln> #yaml runs from root folder of repo
+    
+    - task: MSBuild@1
+      displayName: 'Build  Xamarin.iOS App'
+      inputs:
+        solution: <path to sln> #yaml runs from root folder of repo
+        platform: iPhoneSimulator
+        configuration: '$(BuildConfiguration)'
