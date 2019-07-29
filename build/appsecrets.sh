@@ -3,7 +3,7 @@
 
 if [ ! -n $(TwitchAPIKey) ]
 then
-    echo "You need define the CustomVisionProjectId variable in VSTS"
+    echo "You need define the TwitchAPIKey variable in VSTS"
     exit
 fi
 
