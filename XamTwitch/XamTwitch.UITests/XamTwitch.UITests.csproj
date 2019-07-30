@@ -30,6 +30,9 @@
   <ItemGroup>
     <PackageReference Include="NUnit" Version="3.12.0" />
     <PackageReference Include="Xamarin.UITest" Version="3.0.2" />
+    <PackageReference Include="Xamarin.UITest.POP">
+      <Version>1.0.0</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XamTwitch.iOS\XamTwitch.iOS.csproj">
@@ -47,6 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppInitializer.cs" />
+    <Compile Include="Pages\BasePage.cs" />
+    <Compile Include="Tests\BaseTest.cs" />
+    <Compile Include="Tests\MockDataTests.cs" />
+    <Compile Include="Pages\BrowsePage.cs" />
+    <Compile Include="Pages\DiscoverPage.cs" />
+    <Compile Include="Pages\FollowingPage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
