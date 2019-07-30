@@ -6,4 +6,11 @@
     xmlns:local="clr-namespace:Microsoft.MobCAT.Forms.Pages;assembly=MobCAT.Forms"
     xmlns:vm="clr-namespace:XamTwitch.ViewModels"
     x:TypeArguments="vm:DiscoverPageViewModel">
+    <ListView ItemsSource="{Binding Games}">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding Name}"/>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        </ListView>
 </local:BaseContentPage>

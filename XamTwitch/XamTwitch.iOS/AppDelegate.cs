@@ -25,6 +25,7 @@ namespace XamTwitch.iOS
             Xamarin.Calabash.Start();
             global::Xamarin.Forms.Forms.SetFlags();
             global::Xamarin.Forms.Forms.Init();
+            Bootstrap.Begin();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
