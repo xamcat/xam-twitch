@@ -49,13 +49,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppInitializer.cs" />
-    <Compile Include="Pages\BasePage.cs" />
-    <Compile Include="Tests\BaseTest.cs" />
-    <Compile Include="Tests\MockDataTests.cs" />
     <Compile Include="Pages\BrowsePage.cs" />
     <Compile Include="Pages\DiscoverPage.cs" />
     <Compile Include="Pages\FollowingPage.cs" />
+    <Compile Include="AppManager.cs" />
+    <Compile Include="BasePage.cs" />
+    <Compile Include="BaseTestFixture.cs" />
+    <Compile Include="PlatformQuery.cs" />
+    <Compile Include="Tests\Tests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tests\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
