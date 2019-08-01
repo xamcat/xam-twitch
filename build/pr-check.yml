@@ -33,18 +33,13 @@ stages:
         targetType: 'inline'
         script: |
           nuget sources add -Name Local -Source "%BUILD_REPOSITORY_LOCALPATH%/LocalPackages"
-          
-          nuget restore build/Nuget.config -PackagesDirectory ../packages
 
-
-    # - script: nuget sources update -Name Local -Source "%BUILD_REPOSITORY_LOCALPATH%/LocalPackages"
-
-    # - task: NuGetCommand@2
-    #   inputs:
-    #     command: 'restore'
-    #     restoreSolution: 'XamTwitch/XamTwitch.sln'
-    #     feedsToUse: 'config'
-    #     nugetConfigPath: 'build/Nuget.config'
+    - task: NuGetCommand@2
+      inputs:
+        command: 'restore'
+        restoreSolution: 'XamTwitch/XamTwitch.sln'
+        # feedsToUse: 'config'
+        # nugetConfigPath: 'build/Nuget.config'
 
     - task: XamarinAndroid@1
       displayName: 'Build Xamarin.Android App'
@@ -83,17 +78,13 @@ stages:
         targetType: 'inline'
         script: |
           nuget sources add -Name Local -Source "%BUILD_REPOSITORY_LOCALPATH%/LocalPackages"
-          
-          nuget restore build/Nuget.config -PackagesDirectory ../packages
 
-    # - script: nuget sources update -Name Local -Source "%BUILD_REPOSITORY_LOCALPATH%/LocalPackages"
-
-    # - task: NuGetCommand@2
-    #   inputs:
-    #     command: 'restore'
-    #     restoreSolution: 'XamTwitch/XamTwitch.sln'
-    #     feedsToUse: 'config'
-    #     nugetConfigPath: 'build/Nuget.config'
+    - task: NuGetCommand@2
+      inputs:
+        command: 'restore'
+        restoreSolution: 'XamTwitch/XamTwitch.sln'
+        # feedsToUse: 'config'
+        # nugetConfigPath: 'build/Nuget.config'
         
     - task: MSBuild@1
       displayName: 'Build  Xamarin.iOS App'
