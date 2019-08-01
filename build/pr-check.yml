@@ -32,9 +32,9 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          nuget sources update -Name Local -Source "%BUILD_REPOSITORY_LOCALPATH%/LocalPackages"
+          nuget sources add -Name Local -Source "%BUILD_REPOSITORY_LOCALPATH%/LocalPackages"
           
-          nuget restore build\Nuget.config -PackagesDirectory ..\packages
+          nuget restore build/Nuget.config -PackagesDirectory ../packages
 
 
     # - script: nuget sources update -Name Local -Source "%BUILD_REPOSITORY_LOCALPATH%/LocalPackages"
@@ -82,9 +82,9 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          nuget sources update -Name Local -Source "%BUILD_REPOSITORY_LOCALPATH%/LocalPackages"
+          nuget sources add -Name Local -Source "%BUILD_REPOSITORY_LOCALPATH%/LocalPackages"
           
-          nuget restore build\Nuget.config -PackagesDirectory ..\packages
+          nuget restore build/Nuget.config -PackagesDirectory ../packages
 
     # - script: nuget sources update -Name Local -Source "%BUILD_REPOSITORY_LOCALPATH%/LocalPackages"
 
