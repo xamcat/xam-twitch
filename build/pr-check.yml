@@ -21,7 +21,7 @@ stages:
         connection: 'GitHub connection 6'
         userRepository: 'xamcat/mobcat-library'
         defaultVersionType: 'latest'
-        downloadPath: '$(System.ArtifactsDirectory)'
+        downloadPath: '$(Build.SourcesDirectory)/packages'
 
     - task: NuGetToolInstaller@1
       displayName: Use Nuget 5.0.2
@@ -32,6 +32,7 @@ stages:
       displayName: 'NuGet restore'
       inputs:
         restoreSolution: XamTwitch/XamTwitch.sln  #yaml runs from root folder of repo
+        restoreDirectory: '$(Build.SourcesDirectory)/packages'
 
     - task: XamarinAndroid@1
       displayName: 'Build Xamarin.Android App'
@@ -58,7 +59,7 @@ stages:
         connection: 'GitHub connection 6'
         userRepository: 'xamcat/mobcat-library'
         defaultVersionType: 'latest'
-        downloadPath: '$(System.ArtifactsDirectory)'
+        downloadPath: '$(Build.SourcesDirectory)/packages'
 
     - task: NuGetToolInstaller@1
       displayName: Use Nuget 5.0.2
@@ -69,7 +70,8 @@ stages:
       displayName: 'NuGet restore'
       inputs:
         restoreSolution: XamTwitch/XamTwitch.sln #yaml runs from root folder of repo
-    
+        restoreDirectory: '$(Build.SourcesDirectory)/packages'
+        
     - task: MSBuild@1
       displayName: 'Build  Xamarin.iOS App'
       inputs:
