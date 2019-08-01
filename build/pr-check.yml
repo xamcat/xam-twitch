@@ -38,8 +38,8 @@ stages:
       inputs:
         command: 'restore'
         restoreSolution: 'XamTwitch/XamTwitch.sln'
-        # feedsToUse: 'config'
-        # nugetConfigPath: 'build/Nuget.config'
+        feedsToUse: 'config'
+        nugetConfigPath: 'build/Nuget.config'
 
     - task: XamarinAndroid@1
       displayName: 'Build Xamarin.Android App'
@@ -83,8 +83,8 @@ stages:
       inputs:
         command: 'restore'
         restoreSolution: 'XamTwitch/XamTwitch.sln'
-        # feedsToUse: 'config'
-        # nugetConfigPath: 'build/Nuget.config'
+        feedsToUse: 'config'
+        nugetConfigPath: 'build/Nuget.config'
         
     - task: MSBuild@1
       displayName: 'Build  Xamarin.iOS App'
