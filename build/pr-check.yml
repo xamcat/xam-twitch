@@ -8,6 +8,7 @@ stages:
     displayName: Build Xamarin Android
     pool:
       name: Hosted macOS
+      vmImage: 'macOS 10.14'
       demands:
       - MSBuild
       - Xamarin.Android
@@ -36,6 +37,7 @@ stages:
     displayName: Build Xamarin iOS
     pool:
       name: Hosted macOS
+      vmImage: 'macOS 10.14'
       demands:
       - xcode
       - Xamarin.iOS
