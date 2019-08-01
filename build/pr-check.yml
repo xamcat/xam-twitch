@@ -23,12 +23,12 @@ stages:
     - task: NuGetCommand@2
       displayName: 'NuGet restore'
       inputs:
-        restoreSolution: <path to sln file> #yaml runs from root folder of repo
+        restoreSolution: XamTwitch/XamTwitch.sln  #yaml runs from root folder of repo
 
     - task: XamarinAndroid@1
       displayName: 'Build Xamarin.Android App'
       inputs:
-        projectFile: <path to Android csproj> #yaml runs from root folder of repo
+        projectFile: XamTwitch/XamTwitch.Android/XamTwitch.Android.csproj #yaml runs from root folder of repo
         configuration: '$(BuildConfiguration)'
         createAppPackage: false
 
@@ -52,11 +52,11 @@ stages:
     - task: NuGetCommand@2
       displayName: 'NuGet restore'
       inputs:
-        restoreSolution: <path to sln> #yaml runs from root folder of repo
+        restoreSolution: XamTwitch/XamTwitch.sln #yaml runs from root folder of repo
     
     - task: MSBuild@1
       displayName: 'Build  Xamarin.iOS App'
       inputs:
-        solution: <path to sln> #yaml runs from root folder of repo
+        solution: XamTwitch/XamTwitch.sln #yaml runs from root folder of repo
         platform: iPhoneSimulator
         configuration: '$(BuildConfiguration)'
