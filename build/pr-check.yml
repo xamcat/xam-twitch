@@ -28,15 +28,23 @@ stages:
       inputs:
         versionSpec: '5.0.2'
 
-    
-    - script: nuget sources update -Name Local -Source "%BUILD_REPOSITORY_LOCALPATH%/LocalPackages"
-
-    - task: NuGetCommand@2
+        - task: Bash@3
       inputs:
-        command: 'restore'
-        restoreSolution: 'XamTwitch/XamTwitch.sln'
-        feedsToUse: 'config'
-        nugetConfigPath: 'build/Nuget.config'
+        targetType: 'inline'
+        script: |
+          nuget sources update -Name Local -Source "%BUILD_REPOSITORY_LOCALPATH%/LocalPackages"
+          
+          nuget restore build\Nuget.config -PackagesDirectory ..\packages
+
+
+    # - script: nuget sources update -Name Local -Source "%BUILD_REPOSITORY_LOCALPATH%/LocalPackages"
+
+    # - task: NuGetCommand@2
+    #   inputs:
+    #     command: 'restore'
+    #     restoreSolution: 'XamTwitch/XamTwitch.sln'
+    #     feedsToUse: 'config'
+    #     nugetConfigPath: 'build/Nuget.config'
 
     - task: XamarinAndroid@1
       displayName: 'Build Xamarin.Android App'
@@ -70,14 +78,22 @@ stages:
       inputs:
         versionSpec: '5.0.2'
 
-    - script: nuget sources update -Name Local -Source "%BUILD_REPOSITORY_LOCALPATH%/LocalPackages"
-
-    - task: NuGetCommand@2
+        - task: Bash@3
       inputs:
-        command: 'restore'
-        restoreSolution: 'XamTwitch/XamTwitch.sln'
-        feedsToUse: 'config'
-        nugetConfigPath: 'build/Nuget.config'
+        targetType: 'inline'
+        script: |
+          nuget sources update -Name Local -Source "%BUILD_REPOSITORY_LOCALPATH%/LocalPackages"
+          
+          nuget restore build\Nuget.config -PackagesDirectory ..\packages
+
+    # - script: nuget sources update -Name Local -Source "%BUILD_REPOSITORY_LOCALPATH%/LocalPackages"
+
+    # - task: NuGetCommand@2
+    #   inputs:
+    #     command: 'restore'
+    #     restoreSolution: 'XamTwitch/XamTwitch.sln'
+    #     feedsToUse: 'config'
+    #     nugetConfigPath: 'build/Nuget.config'
         
     - task: MSBuild@1
       displayName: 'Build  Xamarin.iOS App'
