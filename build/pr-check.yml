@@ -8,12 +8,20 @@ stages:
     displayName: Build Xamarin Android
     pool:
       name: Hosted macOS
+      vmImage: 'macOS 10.14'
       demands:
       - MSBuild
       - Xamarin.Android
       
     steps:
     - script: echo Build Xamarin Android Stage!
+
+    - task: DownloadGitHubRelease@0
+      inputs:
+        connection: 'GitHub connection 6'
+        userRepository: 'xamcat/mobcat-library'
+        defaultVersionType: 'latest'
+        downloadPath: '$(System.ArtifactsDirectory)'
 
     - task: NuGetToolInstaller@1
       displayName: Use Nuget 5.0.2
@@ -36,6 +44,7 @@ stages:
     displayName: Build Xamarin iOS
     pool:
       name: Hosted macOS
+      vmImage: 'macOS 10.14'
       demands:
       - xcode
       - Xamarin.iOS
@@ -43,6 +52,13 @@ stages:
 
     steps:
     - script: echo Build Xamarin iOS Stage!
+
+    - task: DownloadGitHubRelease@0
+      inputs:
+        connection: 'GitHub connection 6'
+        userRepository: 'xamcat/mobcat-library'
+        defaultVersionType: 'latest'
+        downloadPath: '$(System.ArtifactsDirectory)'
 
     - task: NuGetToolInstaller@1
       displayName: Use Nuget 5.0.2
