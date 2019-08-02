@@ -27,7 +27,7 @@ The design mockups were created in [Figma](https://www.figma.com)
 
 ## Episodes
 Sandwich episodes with TDD (unit tests, UI tests) and profiling when possible
-### 1: Dean - Intro - File new proj - Setting up dummy views, shell, mobcat, CI/CD
+### [1: Dean - Intro - File new proj - Setting up dummy views, shell, mobcat, CI/CD](https://www.twitch.tv/videos/460163412)
 ### 2: Ben - Build API wrapper - Building out discover tab with collection view - Shell search 
 ### 3: Alexey - Video player inception
 ### 4: Sweeky - Auth, local caching - Recommendations
