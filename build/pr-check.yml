@@ -16,22 +16,30 @@ stages:
     steps:
     - script: echo Build Xamarin Android Stage!
 
-    - task: DownloadGitHubRelease@0
-      inputs:
-        connection: 'GitHub connection 6'
-        userRepository: 'xamcat/mobcat-library'
-        defaultVersionType: 'latest'
-        downloadPath: '$(System.ArtifactsDirectory)'
+    # - task: DownloadGitHubRelease@0
+    #   inputs:
+    #     connection: 'GitHub connection 6'
+    #     userRepository: 'xamcat/mobcat-library'
+    #     defaultVersionType: 'latest'
+    #     downloadPath: '$(System.DefaultWorkingDirectory)/Packages'
 
     - task: NuGetToolInstaller@1
       displayName: Use Nuget 5.0.2
       inputs:
         versionSpec: '5.0.2'
 
-    - task: NuGetCommand@2
-      displayName: 'NuGet restore'
+    - task: Bash@3
       inputs:
-        restoreSolution: XamTwitch/XamTwitch.sln  #yaml runs from root folder of repo
+        targetType: 'inline'
+        script: |
+          nuget sources add -Name Local -Source "%BUILD_REPOSITORY_LOCALPATH%/LocalPackages"
+
+    - task: NuGetCommand@2
+      inputs:
+        command: 'restore'
+        restoreSolution: 'XamTwitch/XamTwitch.sln'
+        feedsToUse: 'config'
+        nugetConfigPath: 'build/Nuget.config'
 
     - task: XamarinAndroid@1
       displayName: 'Build Xamarin.Android App'
@@ -53,23 +61,31 @@ stages:
     steps:
     - script: echo Build Xamarin iOS Stage!
 
-    - task: DownloadGitHubRelease@0
-      inputs:
-        connection: 'GitHub connection 6'
-        userRepository: 'xamcat/mobcat-library'
-        defaultVersionType: 'latest'
-        downloadPath: '$(System.ArtifactsDirectory)'
+    # - task: DownloadGitHubRelease@0
+    #   inputs:
+    #     connection: 'GitHub connection 6'
+    #     userRepository: 'xamcat/mobcat-library'
+    #     defaultVersionType: 'latest'
+    #     downloadPath: '$(System.DefaultWorkingDirectory)/Packages'
 
     - task: NuGetToolInstaller@1
       displayName: Use Nuget 5.0.2
       inputs:
         versionSpec: '5.0.2'
 
-    - task: NuGetCommand@2
-      displayName: 'NuGet restore'
+    - task: Bash@3
       inputs:
-        restoreSolution: XamTwitch/XamTwitch.sln #yaml runs from root folder of repo
-    
+        targetType: 'inline'
+        script: |
+          nuget sources add -Name Local -Source "%BUILD_REPOSITORY_LOCALPATH%/LocalPackages"
+
+    - task: NuGetCommand@2
+      inputs:
+        command: 'restore'
+        restoreSolution: 'XamTwitch/XamTwitch.sln'
+        feedsToUse: 'config'
+        nugetConfigPath: 'build/Nuget.config'
+        
     - task: MSBuild@1
       displayName: 'Build  Xamarin.iOS App'
       inputs:

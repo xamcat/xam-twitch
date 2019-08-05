@@ -7,33 +7,73 @@ https://www.twitch.tv/ is in their own words:
 ## MobCAT Sample (Codename Zimmer)
 The goal of the MobCAT sample is to build a Twitch app via live-coding on Twitch using the latest and greatest in Xamarin.Forms with the MobCAT Toolbox to demonstrate the thought process in using best practices for common use cases. After the app is built, we will also be profiling the app to demonstrate common profiling scenarios.
 
-## Design
-The design mockups were created in [Figma](https://www.figma.com)
-![Design](https://github.com/xamcat/xam-twitch/blob/master/Zimmer%20Design.png)
-
-## Prep
-- Readme/Documentation (Dean)
-    - Update readme & documentation as we progress
-- Generate Twitch API key (Dean)
-- Github package for mobcat-library (Sweeky)
-    - Create package for consuming within Zimmer
-- Setup CI/CD (Sweeky)
-    - Implement repo protection, validation, and build pipeline
-- Assets (Sweeky)
-    - Create/provide assets 
-- UX Prototype (Ben)
-    - Create UX prototype & design mockup
-
-
 ## Episodes
 Sandwich episodes with TDD (unit tests, UI tests) and profiling when possible
-### 1: Dean - Intro - File new proj - Setting up dummy views, shell, mobcat, CI/CD
+### [1: Dean - Intro - File new proj - Setting up dummy views, shell, mobcat, CI/CD](https://www.twitch.tv/videos/460163412)
 ### 2: Ben - Build API wrapper - Building out discover tab with collection view - Shell search 
 ### 3: Alexey - Video player inception
 ### 4: Sweeky - Auth, local caching - Recommendations
 ### 5: Mike - Follow, image/video caching
 ### 6: Alex/ey - Profiling
 
+## Wiki
+Check out the wiki for more details on the episodes! https://github.com/xamcat/xam-twitch/wiki
+
+## Design
+The design mockups were created in [Figma](https://www.figma.com)
+![Design](https://github.com/xamcat/xam-twitch/blob/master/Zimmer%20Design.png)
+
+---
+
+## MobCAT Twitch MVP Functionality
+
+### Auth
+The user will be able to login
+
+### Following
+The user can view livestreams and videos from channels they are following
+
+### Random Stream
+The user will be shown a livestream randomly from their recommendations
+
+### Browse
+The user can browse categories and livestreams
+
+### Search
+The user can search for a category or channel
+
+### Category Details
+Lists livestreams or videos of the category
+
+### Channel Details
+Shows livestream, past broadcasts, highlights, clips, and info
+
+
+## Nice to Haves
+### Chat (Phase 2)
+
+
+## Xamarin Concepts
+The Xamarin concepts and best practices that will be highlighted are
+- Shell
+- Cross platform mobile architecture best practices
+- MobCAT toolbox usage
+- Asynchronous programming
+- Smart image caching and loading
+- Performance optimization, memory management, and profiling
+- Custom Controls for something? (like Top tabs or some button or something) (inline video)
+- Manual notification for new app version (From AppCenter)
+- Forms Visual (Material)
+- Unit Testing
+- UI Testing
+- CI/CD concepts (AppCenter)
+- Package creation
+- Publishing just to AppCenter
+- *Push notifications
+
+* Needs a separate mechanism
+
+---
 
 ## Twitch API
 The Twitch API documentation can be found here: https://dev.twitch.tv/docs/api/
@@ -126,53 +166,3 @@ and view top results from each of the categories
 
 ### Push Notifications
 - Get a push/reminder if when person/channel you are following starts streaming
-
-
-## MobCAT Twitch MVP Functionality
-
-### Auth
-The user will be able to login
-
-### Following
-The user can view livestreams and videos from channels they are following
-
-### Random Stream
-The user will be shown a livestream randomly from their recommendations
-
-### Browse
-The user can browse categories and livestreams
-
-### Search
-The user can search for a category or channel
-
-### Category Details
-Lists livestreams or videos of the category
-
-### Channel Details
-Shows livestream, past broadcasts, highlights, clips, and info
-
-
-## Nice to Haves
-### Chat (Phase 2)
-
-
-## Xamarin Concepts
-The Xamarin concepts and best practices that will be highlighted are
-- Shell
-- Cross platform mobile architecture best practices
-- MobCAT toolbox usage
-- Asynchronous programming
-- Smart image caching and loading
-- Performance optimization, memory management, and profiling
-- Custom Controls for something? (like Top tabs or some button or something) (inline video)
-- Manual notification for new app version (From AppCenter)
-- Forms Visual (Material)
-- Unit Testing
-- UI Testing
-- CI/CD concepts (AppCenter)
-- Package creation
-- Publishing just to AppCenter
-- *Push notifications
-
-* Needs a separate mechanism
-
