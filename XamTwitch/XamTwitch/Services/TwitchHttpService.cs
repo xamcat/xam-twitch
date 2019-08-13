@@ -23,5 +23,10 @@ namespace XamTwitch.Services
         {
             return GetAsync<TwitchGames>($"games?name={gameName}");
         }
+
+        public Task<TwitchStreams> GetTwitchStreamsAsync()
+        {
+            return GetAsync<TwitchStreams>($"streams");
+        }
     }
 }

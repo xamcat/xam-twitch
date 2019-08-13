@@ -5,11 +5,40 @@
     x:Class="XamTwitch.Views.DiscoverPage"
     xmlns:local="clr-namespace:Microsoft.MobCAT.Forms.Pages;assembly=MobCAT.Forms"
     xmlns:vm="clr-namespace:XamTwitch.ViewModels"
+    xmlns:converters="clr-namespace:XamTwitch.Converters"
     x:TypeArguments="vm:DiscoverPageViewModel">
-    <ListView ItemsSource="{Binding Games}">
+    <ListView ItemsSource="{Binding Streams}" RowHeight="280">
+        <ListView.Resources>
+            <ResourceDictionary>
+                <converters:UrlFormatConverter x:Key="UrlFormatConverter"/>
+            </ResourceDictionary>
+        </ListView.Resources>
         <ListView.ItemTemplate>
             <DataTemplate>
-                <TextCell Text="{Binding Name}"/>
+                <ViewCell>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="200"/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Image Source="{Binding ThumbnailUrl, Converter={StaticResource UrlFormatConverter}}"/>
+                        <Label Text="{Binding ViewerCount}" FontAttributes="Bold" TextColor="White" VerticalTextAlignment="End" Margin="20"/>
+
+                        <Label Grid.Row="1" FontSize="10" HorizontalTextAlignment="Center" WidthRequest="200">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding UserName}"/>
+                                    <Span Text=" streaming "/>
+                                    <Span Text="{Binding Title}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        
+                        
+                    </Grid>
+                </ViewCell>
+                
             </DataTemplate>
         </ListView.ItemTemplate>
         </ListView>

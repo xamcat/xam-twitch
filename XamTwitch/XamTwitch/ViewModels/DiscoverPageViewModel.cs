@@ -12,11 +12,11 @@ namespace XamTwitch.ViewModels
     {
         private readonly ITwitchHttpService _twitchHttpService;
 
-        private ObservableCollection<TwitchGame> _games;
-        public ObservableCollection<TwitchGame> Games
+        private ObservableCollection<TwitchStream> _streams;
+        public ObservableCollection<TwitchStream> Streams
         {
-            get => _games;
-            set => RaiseAndUpdate(ref _games, value);
+            get => _streams;
+            set => RaiseAndUpdate(ref _streams, value);
         }
 
         public DiscoverPageViewModel()
@@ -26,8 +26,8 @@ namespace XamTwitch.ViewModels
 
         public override async Task InitAsync()
         {
-            var gamesResult = await _twitchHttpService.GetTwitchGamesAsync("Overwatch").ConfigureAwait(false);
-            Games = new ObservableCollection<TwitchGame>(gamesResult.Games);
+            var gamesResult = await _twitchHttpService.GetTwitchStreamsAsync().ConfigureAwait(false);
+            Streams = new ObservableCollection<TwitchStream>(gamesResult.Data);
         }
     }
 }
