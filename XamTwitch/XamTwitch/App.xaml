@@ -6,6 +6,16 @@
              mc:Ignorable="d"
              x:Class="XamTwitch.App">
     <Application.Resources>
+      <ResourceDictionary>
+        <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeSolid">
+          <On Platform="iOS" Value="FontAwesome5Free-Solid"/>
+          <On Platform="Android" Value="fa-solid-900.ttf#Solid"/>
+        </OnPlatform>
+        <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeRegular">
+          <On Platform="iOS" Value="FontAwesome5Free-Regular"/>
+          <On Platform="Android" Value="fa-regular-400.ttf#Regular"/>
+        </OnPlatform>
+      </ResourceDictionary>
         
     </Application.Resources>
 </Application>
