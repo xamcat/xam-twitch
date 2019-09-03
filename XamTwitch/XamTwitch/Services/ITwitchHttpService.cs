@@ -7,5 +7,6 @@ namespace XamTwitch.Services
     public interface ITwitchHttpService
     {
         Task<TwitchGames> GetTwitchGamesAsync(string gameName);
+        Task<TwitchStreams> GetTwitchStreamsAsync();
     }
 }

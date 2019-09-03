@@ -13,7 +13,7 @@
     -->
     <Shell.Resources>
         <ResourceDictionary>
-            <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Color x:Key="NavigationPrimary">#6441A4</Color>
             <Style x:Key="BaseStyle" TargetType="Element">
                 <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="Shell.ForegroundColor" Value="White" />
@@ -25,19 +25,82 @@
                 <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
                 <Setter Property="Shell.TabBarTitleColor" Value="White"/>
             </Style>
-            <Style TargetType="ShellItem" BasedOn="{StaticResource BaseStyle}" />
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+
+            <Style TargetType="Tab" x:Key="FollowTab">
+                <Style.Triggers>
+                <Trigger TargetType="Tab"
+                         Property="IsChecked" Value="False">
+                    <Setter Property="Icon" >
+                        <Setter.Value>
+                            <FontImageSource FontFamily="{StaticResource FontAwesomeRegular}" Glyph="&#xf004;"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger TargetType="Tab"
+                         Property="IsChecked" Value="True">
+                    <Setter Property="Icon" >
+                        <Setter.Value>
+                            <FontImageSource FontFamily="{StaticResource FontAwesomeSolid}" Glyph="&#xf004;"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style TargetType="Tab" x:Key="DiscoverTab">
+                <Style.Triggers>
+                <Trigger TargetType="Tab"
+                         Property="IsChecked" Value="False">
+                    <Setter Property="Icon" >
+                        <Setter.Value>
+                            <FontImageSource FontFamily="{StaticResource FontAwesomeRegular}" Glyph="&#xf14e;"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger TargetType="Tab"
+                         Property="IsChecked" Value="True">
+                    <Setter Property="Icon" >
+                        <Setter.Value>
+                            <FontImageSource FontFamily="{StaticResource FontAwesomeSolid}" Glyph="&#xf14e;"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style TargetType="Tab" x:Key="BrowseTab">
+                <Style.Triggers>
+                <Trigger TargetType="Tab"
+                         Property="IsChecked" Value="False">
+                    <Setter Property="Icon" >
+                        <Setter.Value>
+                            <FontImageSource FontFamily="{StaticResource FontAwesomeRegular}" Glyph="&#xf24d;"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger TargetType="Tab"
+                         Property="IsChecked" Value="True">
+                    <Setter Property="Icon" >
+                        <Setter.Value>
+                            <FontImageSource FontFamily="{StaticResource FontAwesomeSolid}" Glyph="&#xf24d;"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                </Style.Triggers>
+            </Style>
         </ResourceDictionary>
     </Shell.Resources>
 
     <!-- Your Pages -->
     <TabBar>
-        <Tab Title="Following" Icon="tab_feed.png">
+        <Tab Title="Following" Style="{StaticResource FollowTab}">
             <ShellContent ContentTemplate="{DataTemplate local:FollowingPage}" />
         </Tab>
-        <Tab Title="Discover" Icon="tab_about.png">
+        <Tab Title="Discover" Style="{StaticResource DiscoverTab}">
             <ShellContent ContentTemplate="{DataTemplate local:DiscoverPage}" />
         </Tab>
-        <Tab Title="Browse" Icon="tab_about.png">
+        <Tab Title="Browse" Style="{StaticResource BrowseTab}">
             <ShellContent ContentTemplate="{DataTemplate local:BrowsePage}" />
         </Tab>
     </TabBar>
