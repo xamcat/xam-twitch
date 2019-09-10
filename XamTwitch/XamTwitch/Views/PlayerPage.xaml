@@ -4,10 +4,23 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Microsoft.MobCAT.Forms.Pages;assembly=MobCAT.Forms"
     xmlns:vm="clr-namespace:XamTwitch.ViewModels"
+    xmlns:control="clr-namespace:XamTwitch.Controls"
     x:TypeArguments="vm:PlayerPageViewModel"
     x:Class="XamTwitch.Views.PlayerPage"
     Title="{Binding Stream.Title}">
 
-    <WebView Source="{Binding StreamSource}" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <control:PlayerView Source="{Binding StreamSource}" BackgroundColor="Fuchsia"/>
+        <Label
+            Grid.Row="1"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand"
+            BackgroundColor="Green"
+            Text="Sweeky will implement chat here, right? :)" />
+    </Grid>
 
 </local:BaseContentPage>
