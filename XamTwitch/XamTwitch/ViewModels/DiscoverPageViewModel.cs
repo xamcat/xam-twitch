@@ -19,6 +19,21 @@ namespace XamTwitch.ViewModels
             set => RaiseAndUpdate(ref _streams, value);
         }
 
+        private TwitchStream _selectedStream;
+        public TwitchStream SelectedStream
+        {
+            get => _selectedStream;
+            set
+            {
+                if (RaiseAndUpdate(ref _selectedStream, value) && value != null)
+                {
+                    var playerViewModel = new PlayerPageViewModel();
+                    playerViewModel.Stream = value;
+                    this.Navigation.PushAsync(playerViewModel);
+                }
+            }
+        }
+
         public DiscoverPageViewModel()
         {
             _twitchHttpService = ServiceContainer.Resolve<ITwitchHttpService>();

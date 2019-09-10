@@ -4,10 +4,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="XamTwitch.Views.DiscoverPage"
     xmlns:local="clr-namespace:Microsoft.MobCAT.Forms.Pages;assembly=MobCAT.Forms"
+    xmlns:bh="clr-namespace:XamTwitch.Behaviors"
     xmlns:vm="clr-namespace:XamTwitch.ViewModels"
     xmlns:converters="clr-namespace:XamTwitch.Converters"
     x:TypeArguments="vm:DiscoverPageViewModel">
-    <ListView ItemsSource="{Binding Streams}" RowHeight="280">
+    <ListView ItemsSource="{Binding Streams}"
+              SelectedItem="{Binding SelectedStream, Mode=TwoWay}"
+              RowHeight="280">
+        <ListView.Behaviors>
+            <bh:ClearListViewSelectionBehavior />
+        </ListView.Behaviors>
         <ListView.Resources>
             <ResourceDictionary>
                 <converters:UrlFormatConverter x:Key="UrlFormatConverter"/>

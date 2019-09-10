@@ -23,6 +23,7 @@
     <Folder Include="Models\" />
     <Folder Include="Helpers\" />
     <Folder Include="Converters\" />
+    <Folder Include="Behaviors\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\Browse.xaml" />
