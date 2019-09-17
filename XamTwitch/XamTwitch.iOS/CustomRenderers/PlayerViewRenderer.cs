@@ -15,7 +15,6 @@ namespace XamTwitch.iOS.CustomRenderers
 {
     public class PlayerViewRenderer : ViewRenderer<PlayerView, UIView>
     {
-        private AVPlayerViewController _playerViewController;
         private AVPlayer _player;
 
         public PlayerViewRenderer()
@@ -26,16 +25,29 @@ namespace XamTwitch.iOS.CustomRenderers
         {
             base.OnElementChanged(e);
 
+            if (e.OldElement != null)
+            {
+                System.Diagnostics.Debug.WriteLine($"PlayerViewRenderer.OnElementChanged.OldElement is not null");
+                if (_player != null)
+                {
+                    _player.Pause();
+                    _player.Dispose();
+                    _player = null;
+                }
+            }
+
             if (e.NewElement != null)
             {
+                System.Diagnostics.Debug.WriteLine($"PlayerViewRenderer.OnElementChanged.NewElement is not null");
+
                 if (Control == null)
                 {
-                    _playerViewController = new AVPlayerViewController();   
+                    var playerViewController = new AVPlayerViewController();
                     _player = new AVPlayer();
-                    _playerViewController.Player = _player;
+                    playerViewController.Player = _player;
 
                     SetSource();
-                    this.SetNativeControl(_playerViewController.View);
+                    this.SetNativeControl(playerViewController.View);
                 }
             }
         }
@@ -59,6 +71,8 @@ namespace XamTwitch.iOS.CustomRenderers
             var item = new AVPlayerItem(asset);
             _player.ReplaceCurrentItemWithPlayerItem(item);
             _player.Play();
+
+            System.Diagnostics.Debug.WriteLine($"PlayerViewRenderer.SetSource.Play");
         }
     }
 }
