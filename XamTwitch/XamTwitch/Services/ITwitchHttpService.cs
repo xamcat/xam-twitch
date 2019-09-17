@@ -8,5 +8,6 @@ namespace XamTwitch.Services
     {
         Task<TwitchGames> GetTwitchGamesAsync(string gameName);
         Task<TwitchStreams> GetTwitchStreamsAsync();
+        Task<string> GetTwitchStreamUrlAsync(string userName);
     }
 }
