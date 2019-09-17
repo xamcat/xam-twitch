@@ -72,7 +72,7 @@ namespace XamTwitch.iOS.CustomRenderers
             _player.ReplaceCurrentItemWithPlayerItem(item);
             _player.Play();
 
-            System.Diagnostics.Debug.WriteLine($"PlayerViewRenderer.SetSource.Play");
+            System.Diagnostics.Debug.WriteLine($"PlayerViewRenderer.SetSource.Play: {this.Element.Source}");
         }
     }
 }
