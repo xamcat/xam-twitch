@@ -14,7 +14,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <control:PlayerView Source="{Binding StreamSource}" BackgroundColor="Fuchsia"/>
+        <control:PlayerView Source="{Binding StreamSource}" BackgroundColor="Purple"/>
         <Label
             Grid.Row="1"
             HorizontalOptions="CenterAndExpand"

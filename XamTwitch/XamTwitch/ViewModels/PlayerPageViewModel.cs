@@ -15,6 +15,7 @@ namespace XamTwitch.ViewModels
     public class PlayerPageViewModel : BaseNavigationViewModel
     {
         private readonly ITwitchHttpService _twitchHttpService;
+        private readonly ITwitchPlaylistHttpService _twitchPlaylistHttpService;
 
         private TwitchStream _stream;
         public TwitchStream Stream
@@ -39,6 +40,7 @@ namespace XamTwitch.ViewModels
         public PlayerPageViewModel()
         {
             _twitchHttpService = ServiceContainer.Resolve<ITwitchHttpService>();
+            _twitchPlaylistHttpService = ServiceContainer.Resolve<ITwitchPlaylistHttpService>();
         }
 
         private async Task FetchTwitchStreamAsync()
@@ -48,7 +50,9 @@ namespace XamTwitch.ViewModels
                 if (Stream == null)
                     return;
 
-                StreamSource = await _twitchHttpService.GetTwitchStreamUrlAsync(Stream.UserName);
+                var token = await _twitchHttpService.GetTwitchTokenAsync(Stream.UserName);
+                var streamUrl = await _twitchPlaylistHttpService.GetPlaylistUriAsync(Stream.UserName, token);
+                StreamSource = streamUrl;
             }
             catch (Exception ex)
             {
