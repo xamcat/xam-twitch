@@ -11,8 +11,8 @@ namespace XamTwitch
         public static string AppName = "XamTwitch";
 
         // OAuth
-        public static string iOSClientId = "qk1v6l0d2nodm1bkk6sqv6ivueh9j2";
-        public static string AndroidClientId = "y90kgs7q4kow9kczfa6wxalpaeja62";
+        public static string iOSClientId = "";
+        public static string AndroidClientId = "";
 
         // These values do not need changing
         public static string Scope = "user:read:email";
