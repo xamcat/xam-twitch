@@ -9,12 +9,13 @@ The goal of the MobCAT sample is to build a Twitch app via live-coding on Twitch
 
 ## Episodes
 Sandwich episodes with TDD (unit tests, UI tests) and profiling when possible
-### [1: Dean - Intro - File new proj - Setting up dummy views, shell, mobcat, CI/CD](https://www.twitch.tv/videos/460163412)
+### [1: Dean - Intro - File new proj - Setting up dummy views, shell, mobcat, CI/CD](https://www.youtube.com/watch?v=BT41EoUTKjY&t=1s)
 ### [2: Ben - Build API wrapper - Building out discover tab, Font Awesome and Style Triggers](https://www.youtube.com/watch?v=h3j4s9YnxPk)
 ### [3a: Alexey - Video player inception](https://www.youtube.com/watch?v=hP8F8P9vbVA)
 ### [3b: Alexey - Native iOS video player implementation](https://www.youtube.com/watch?v=lC9WTV2i2Ws)
 ### [3c: Alexey - Native Android video player implementation](https://www.youtube.com/watch?v=KUa9BbWwQqE)
-### 4: Sweeky - Auth, local caching - Recommendations
+### [4a: Sweeky - Auth Initial Setup](https://www.youtube.com/watch?v=rlcR_2xsIFo)
+### 4: Sweeky - Auth Completion + Searching hopefully
 ### 5: Mike - Follow, image/video caching
 ### 6: Alex/ey - Profiling
 
