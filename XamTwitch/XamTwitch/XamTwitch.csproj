@@ -15,6 +15,7 @@
     <PackageReference Include="MobCAT" Version="1.0.5656" />
     <PackageReference Include="MobCAT.Forms" Version="1.0.5656" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Xamarin.Auth" Version="1.7.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />

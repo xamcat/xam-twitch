@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using XamTwitch.Helpers;
 
 namespace XamTwitch.iOS
 {
@@ -26,9 +27,21 @@ namespace XamTwitch.iOS
             global::Xamarin.Forms.Forms.SetFlags();
             global::Xamarin.Forms.Forms.Init();
             Bootstrap.Begin();
+            global::Xamarin.Auth.Presenters.XamarinIOS.AuthenticationConfiguration.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+        }
+
+        public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
+        {
+            // Convert NSUrl to Uri
+            var uri = new Uri(url.AbsoluteString);
+
+            // Load redirectUrl page
+            AuthenticationState.Authenticator.OnPageLoading(uri);
+
+            return true;
         }
     }
 }

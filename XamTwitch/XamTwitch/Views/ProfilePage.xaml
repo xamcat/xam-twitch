@@ -7,5 +7,10 @@
              xmlns:vm="clr-namespace:XamTwitch.ViewModels"
              x:TypeArguments="vm:ProfilePageViewModel">
     <ContentPage.Content>
+        <StackLayout Margin="20,20">
+            <Button Text="Login" x:Name="LoginButton" Clicked="LoginButton_Clicked"/>
+            <Label x:Name="UserName" Text="UserName Coming Soon" HorizontalTextAlignment="Center"/>
+            <Image x:Name="ProfileImage" Aspect="AspectFit"/>
+        </StackLayout>
     </ContentPage.Content>
 </local:BaseContentPage>

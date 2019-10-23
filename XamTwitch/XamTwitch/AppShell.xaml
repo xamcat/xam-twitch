@@ -96,7 +96,7 @@
                          Property="IsChecked" Value="False">
                     <Setter Property="Icon" >
                         <Setter.Value>
-                            <FontImageSource FontFamily="{StaticResource FontAwesomeRegular}" Glyph="&#xf2cb;"/>
+                            <FontImageSource FontFamily="{StaticResource FontAwesomeSolid}" Glyph="&#xf2cb;"/>
                         </Setter.Value>
                     </Setter>
                 </Trigger>
@@ -104,7 +104,7 @@
                          Property="IsChecked" Value="True">
                     <Setter Property="Icon" >
                         <Setter.Value>
-                            <FontImageSource FontFamily="{StaticResource FontAwesomeRegular}" Glyph="&#xf2c7;"/>
+                            <FontImageSource FontFamily="{StaticResource FontAwesomeSolid}" Glyph="&#xf2c7;"/>
                         </Setter.Value>
                     </Setter>
                 </Trigger>

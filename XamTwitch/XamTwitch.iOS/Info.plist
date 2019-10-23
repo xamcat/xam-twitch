@@ -34,11 +34,23 @@
 	<string>XamTwitch</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
-
-  <key>UIAppFonts</key>
-  <array>
-    <string>fa-regular-400.ttf</string>
-      <string>fa-solid-900.ttf</string>
-</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>fa-regular-400.ttf</string>
+		<string>fa-solid-900.ttf</string>
+	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>TwitchAuth</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>https://localhost:/oauth2redirect</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+		</dict>
+	</array>
 </dict>
 </plist>
