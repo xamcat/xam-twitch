@@ -89,6 +89,27 @@
                 </Trigger>
                 </Style.Triggers>
             </Style>
+
+            <Style TargetType="Tab" x:Key="ProfileTab">
+                <Style.Triggers>
+                <Trigger TargetType="Tab"
+                         Property="IsChecked" Value="False">
+                    <Setter Property="Icon" >
+                        <Setter.Value>
+                            <FontImageSource FontFamily="{StaticResource FontAwesomeRegular}" Glyph="&#xf2cb;"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger TargetType="Tab"
+                         Property="IsChecked" Value="True">
+                    <Setter Property="Icon" >
+                        <Setter.Value>
+                            <FontImageSource FontFamily="{StaticResource FontAwesomeRegular}" Glyph="&#xf2c7;"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                </Style.Triggers>
+            </Style>
         </ResourceDictionary>
     </Shell.Resources>
 
@@ -102,6 +123,9 @@
         </Tab>
         <Tab Title="Browse" Style="{StaticResource BrowseTab}">
             <ShellContent ContentTemplate="{DataTemplate local:BrowsePage}" />
+        </Tab>
+        <Tab Title="Profile" Style="{StaticResource ProfileTab}">
+            <ShellContent ContentTemplate="{DataTemplate local:ProfilePage}" />
         </Tab>
     </TabBar>
 
