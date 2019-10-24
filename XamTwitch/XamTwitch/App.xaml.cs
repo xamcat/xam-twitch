@@ -1,15 +1,29 @@
-﻿using Xamarin.Forms;
+﻿using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace XamTwitch
 {
     public partial class App : Application
     {
-
         public App()
         {
             InitializeComponent();
 
             MainPage = new AppShell();
+
+            //TODO : sorry profiler-person this is bad for app launch
+            var user = SecureStorage.GetAsync(Constants.AppName).Result;
+
+            if(user == null)
+            {
+                Shell.Current.GoToAsync("//login");
+            }
+            else
+            {
+                Shell.Current.GoToAsync("//main");
+            }
+
+
         }
 
         protected override void OnStart()

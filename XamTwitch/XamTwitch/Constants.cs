@@ -3,7 +3,7 @@ namespace XamTwitch
 {
     public static class Constants
     {
-        public const string TwitchApiKey = "";
+        public const string TwitchApiKey = "if8owq3ywwqc2sn9q9wrwnpr6yyjtp";
         public const string TwitchApiUri = "https://api.twitch.tv/";
         public const string TwitchPlaylistApiUri = "https://usher.ttvnw.net/";
         public const string ClientIDHeaderKey = "Client-ID";
@@ -11,8 +11,8 @@ namespace XamTwitch
         public static string AppName = "XamTwitch";
 
         // OAuth
-        public static string iOSClientId = "";
-        public static string AndroidClientId = "";
+        public static string iOSClientId = "qk1v6l0d2nodm1bkk6sqv6ivueh9j2";
+        public static string AndroidClientId = "y90kgs7q4kow9kczfa6wxalpaeja62";
 
         // These values do not need changing
         public static string Scope = "user:read:email";

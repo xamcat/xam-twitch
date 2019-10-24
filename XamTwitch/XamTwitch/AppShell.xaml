@@ -114,7 +114,7 @@
     </Shell.Resources>
 
     <!-- Your Pages -->
-    <TabBar>
+    <TabBar Route="main">
         <Tab Title="Following" Style="{StaticResource FollowTab}">
             <ShellContent ContentTemplate="{DataTemplate local:FollowingPage}" />
         </Tab>
@@ -128,6 +128,10 @@
             <ShellContent ContentTemplate="{DataTemplate local:ProfilePage}" />
         </Tab>
     </TabBar>
+
+    <ShellItem Route="login">
+        <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" />
+    </ShellItem>
 
     <!-- Optional Templates 
     // These may be provided inline as below or as separate classes.
