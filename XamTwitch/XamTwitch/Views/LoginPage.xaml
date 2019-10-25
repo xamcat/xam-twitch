@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:BaseContentPage 
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamTwitch.Views.LoginPage"
+             xmlns:local="clr-namespace:Microsoft.MobCAT.Forms.Pages;assembly=MobCAT.Forms"
+             xmlns:vm="clr-namespace:XamTwitch.ViewModels"
+             x:TypeArguments="vm:LoginViewModel"
+             Shell.NavBarIsVisible="False"
+             Shell.FlyoutBehavior="Disabled">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Xam.Twitch!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Button x:Name="LoginButton" Text="Login Button" Command="{Binding LoginCommand}" />
+        </StackLayout>
+    </ContentPage.Content>
+</local:BaseContentPage>
