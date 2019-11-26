@@ -47,5 +47,13 @@
   <ItemGroup>
     <Folder Include="Tests\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XamTwitch.iOS\XamTwitch.iOS.csproj">
+      <Project>{2C268F77-82E0-4B17-9D59-3819365141A4}</Project>
+      <Name>XamTwitch.iOS</Name>
+      <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

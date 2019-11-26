@@ -5,7 +5,7 @@ namespace XamTwitch.UITests
 {
     static class AppManager
     {
-        const string ApkPath = "";
+        const string ApkPath = "/Users/swsat/Documents/WorkFolder/XAMCAT/xam-twitch/XamTwitch/XamTwitch.Android/bin/Release/com.mobcat.xamtwitch-Signed.apk";
         const string AppPath = "";
         const string IpaBundleId = "";
 
