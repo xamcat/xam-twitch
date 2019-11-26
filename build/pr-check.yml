@@ -73,6 +73,12 @@ stages:
       inputs:
         versionSpec: '5.0.2'
 
+    - task: UseDotNet@2
+      displayName: 'Set .NET Version'
+      inputs:
+        packageType: 'sdk'
+        version: '3.0.x'
+
     - task: Bash@3
       inputs:
         targetType: 'inline'
