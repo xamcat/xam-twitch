@@ -7,13 +7,14 @@
              xmlns:vm="clr-namespace:XamTwitch.ViewModels"
              x:TypeArguments="vm:LoginViewModel"
              Shell.NavBarIsVisible="False"
-             Shell.FlyoutBehavior="Disabled">
+             Shell.FlyoutBehavior="Disabled"
+             AutomationId="LoginPage">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Welcome to Xam.Twitch!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Button x:Name="LoginButton" Text="Login Button" Command="{Binding LoginCommand}" />
+            <Button x:Name="LoginButton" Text="Login Button" Command="{Binding LoginCommand}" AutomationId="LoginButton"/>
         </StackLayout>
     </ContentPage.Content>
 </local:BaseContentPage>
