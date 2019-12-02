@@ -1,28 +1,49 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Microsoft.MobCAT.Services;
 using Newtonsoft.Json;
+using Xamarin.Auth;
+using Xamarin.Essentials;
+using XamTwitch.Helpers;
 using XamTwitch.Models;
 
 namespace XamTwitch.Services
 {
-    public class TwitchAuthHttpService
+
+    public class TwitchAuthHttpService : BaseHttpService, ITwitchAuthHttpService
     {
-        HttpClient httpClient = new HttpClient();
+        public Account CurrentUser { get; set; }
 
-        public TwitchAuthHttpService(string access_token)
+        public TwitchAuthHttpService() : base(Constants.TwitchApiUri)
         {
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", access_token);
+            //placeholder logic check
+            string userString = SecureStorage.GetAsync(Constants.AppName).Result;
+            if (userString != null)
+            {
+                List<Account> user_object = JsonConvert.DeserializeObject<List<Account>>(userString);
+                CurrentUser = user_object[0];
+            }
+            else
+            {
+                CurrentUser = new Account();
+                CurrentUser.Properties["access_token"] = "";
+            }
+
+            Serializer = new NewtonsoftJsonSerializer();
         }
 
-        public async Task<TwitchUser> GetUserAsync()
-        {
-            var response = await httpClient.GetAsync("https://api.twitch.tv/helix/users");
-            var test = await response.Content.ReadAsStringAsync();
-            TwitchUser user = JsonConvert.DeserializeObject<TwitchUser>(test);
+        void SetBearerTokenForRequest(HttpRequestMessage request)
+            => request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", CurrentUser.Properties["access_token"]);
 
-            return user;
+
+        public Task<TwitchUser> GetUserAsync()
+        {
+            return GetAsync<TwitchUser>($"helix/users",modifyRequest:(request) => SetBearerTokenForRequest(request));
         }
+
+
     }
 }
