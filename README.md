@@ -16,7 +16,7 @@ Sandwich episodes with TDD (unit tests, UI tests) and profiling when possible
 ### [3c: Alexey - Native Android video player implementation](https://www.youtube.com/watch?v=KUa9BbWwQqE)
 ### [4a: Sweeky - Auth Initial Setup](https://www.youtube.com/watch?v=rlcR_2xsIFo)
 ### [4b: Sweeky - Auth Completion + Shell Route Login Flow](https://www.youtube.com/watch?v=Bbg3wIjBK-Y)
-### 4c: Sweeky - UITests? DevOps? 
+### [4c: Sweeky - UITests! DevOps!](https://www.twitch.tv/videos/513663058)
 ### 5: Mike - Follow, image/video caching
 ### 6: Alex/ey - Profiling
 
