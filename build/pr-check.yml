@@ -73,11 +73,29 @@ stages:
       inputs:
         versionSpec: '5.0.2'
 
+    - task: UseDotNet@2
+      displayName: 'Set .NET Version set 3.0.x'
+      inputs:
+        packageType: 'sdk'
+        version: '3.0.x'
+
+    - task: Bash@3
+      displayName: 'Set Mono Version 6.4.0'
+      inputs:
+        targetType: 'inline'
+        script: 'sudo $AGENT_HOMEDIRECTORY/scripts/select-xamarin-sdk.sh $(MonoVersion)'
+
     - task: Bash@3
       inputs:
         targetType: 'inline'
         script: |
           nuget sources add -Name Local -Source "%BUILD_REPOSITORY_LOCALPATH%/LocalPackages"
+
+    - task: Bash@3
+      displayName: 'Set Xcode Version to 11.2.1'
+      inputs:
+        targetType: 'inline'
+        script: '/bin/bash -c "echo ''##vso[task.setvariable variable=MD_APPLE_SDK_ROOT;]''$(xcodeRoot);sudo xcode-select --switch $(xcodeRoot)/Contents/Developer"'
 
     - task: NuGetCommand@2
       inputs:

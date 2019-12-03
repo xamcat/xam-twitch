@@ -5,8 +5,8 @@ namespace XamTwitch.UITests
 {
     static class AppManager
     {
-        const string ApkPath = "";
-        const string AppPath = "";
+        const string ApkPath = "../../../Binaries/com.mobcat.xamtwitch-Signed.apk";
+        const string AppPath = "../../../Binaries/XamTwitch.iOS.app";
         const string IpaBundleId = "";
 
         static IApp app;

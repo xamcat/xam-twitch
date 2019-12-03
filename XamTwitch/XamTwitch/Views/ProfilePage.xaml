@@ -8,9 +8,9 @@
              x:TypeArguments="vm:ProfilePageViewModel">
     <ContentPage.Content>
         <StackLayout Margin="20,20">
-            <Button Text="Login" x:Name="LoginButton" Clicked="LoginButton_Clicked"/>
-            <Label x:Name="UserName" Text="UserName Coming Soon" HorizontalTextAlignment="Center"/>
-            <Image x:Name="ProfileImage" Aspect="AspectFit"/>
+            <Label x:Name="UserName" Text="{Binding UserName}" HorizontalTextAlignment="Center"/>
+            <Image x:Name="ProfileImage" Aspect="AspectFit" WidthRequest="100" HeightRequest="100" Source="{Binding ProfileImageSource}"/>
+            <Button Text="Logout" x:Name="LogoutButton" Command="{Binding LogoutCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </local:BaseContentPage>

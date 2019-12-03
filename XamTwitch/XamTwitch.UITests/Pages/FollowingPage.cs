@@ -7,8 +7,8 @@ namespace XamTwitch.UITests.Pages
     {
         protected override PlatformQuery Trait => new PlatformQuery
         {
-            Android = null,
-            iOS = null
+            Android = x => x.Marked("Following"),
+            iOS = x => x.Marked("Following")
         };
 
         public FollowingPage() 

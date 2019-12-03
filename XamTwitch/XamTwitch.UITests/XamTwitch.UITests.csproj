@@ -29,24 +29,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="NUnit" Version="3.12.0" />
-    <PackageReference Include="Xamarin.UITest" Version="3.0.2" />
+    <PackageReference Include="Xamarin.UITest" Version="3.0.4" />
     <PackageReference Include="Xamarin.UITest.POP">
       <Version>1.0.0</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\XamTwitch.iOS\XamTwitch.iOS.csproj">
-      <Project>{2C268F77-82E0-4B17-9D59-3819365141A4}</Project>
-      <Name>XamTwitch.iOS</Name>
-      <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\XamTwitch.Android\XamTwitch.Android.csproj">
-      <Project>{DBA78A32-EEAF-47A4-9D5B-5B1D8523D1F7}</Project>
-      <Name>XamTwitch.Android</Name>
-      <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
-      <Private>False</Private>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\BrowsePage.cs" />
@@ -57,6 +43,7 @@
     <Compile Include="BaseTestFixture.cs" />
     <Compile Include="PlatformQuery.cs" />
     <Compile Include="Tests\Tests.cs" />
+    <Compile Include="Pages\LoginPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tests\" />
