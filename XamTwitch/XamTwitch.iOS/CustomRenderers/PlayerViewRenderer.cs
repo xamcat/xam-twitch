@@ -4,6 +4,7 @@ using AVFoundation;
 using AVKit;
 using Foundation;
 using UIKit;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using XamTwitch.Controls;
@@ -28,12 +29,7 @@ namespace XamTwitch.iOS.CustomRenderers
             if (e.OldElement != null)
             {
                 System.Diagnostics.Debug.WriteLine($"PlayerViewRenderer.OnElementChanged.OldElement is not null");
-                if (_player != null)
-                {
-                    _player.Pause();
-                    _player.Dispose();
-                    _player = null;
-                }
+                ClearNativePlayer();
             }
 
             if (e.NewElement != null)
@@ -42,12 +38,7 @@ namespace XamTwitch.iOS.CustomRenderers
 
                 if (Control == null)
                 {
-                    var playerViewController = new AVPlayerViewController();
-                    _player = new AVPlayer();
-                    playerViewController.Player = _player;
-
                     SetSource();
-                    this.SetNativeControl(playerViewController.View);
                 }
             }
         }
@@ -64,15 +55,35 @@ namespace XamTwitch.iOS.CustomRenderers
 
         private void SetSource()
         {
-            if(string.IsNullOrWhiteSpace(this.Element.Source))
-                return;
-    
-            var asset = AVAsset.FromUrl(new NSUrl(this.Element.Source));
-            var item = new AVPlayerItem(asset);
-            _player.ReplaceCurrentItemWithPlayerItem(item);
-            _player.Play();
+            ClearNativePlayer();
+            CreateNativePlayer();
 
-            System.Diagnostics.Debug.WriteLine($"PlayerViewRenderer.SetSource.Play: {this.Element.Source}");
+            _player?.Play();
+            System.Diagnostics.Debug.WriteLine($"PlayerViewRenderer.SetSource.Play ({MainThread.IsMainThread}): {this.Element.Source}");
+        }
+
+        private void ClearNativePlayer()
+        {
+            if (_player != null)
+            {
+                _player.Pause();
+                _player.Dispose();
+                _player = null;
+            }
+        }
+
+        private void CreateNativePlayer()
+        {
+            var source = this.Element.Source;
+            if (string.IsNullOrWhiteSpace(source))
+                return;
+
+            var asset = AVAsset.FromUrl(new NSUrl(source));
+            var item = new AVPlayerItem(asset);
+            var playerViewController = new AVPlayerViewController();
+            _player = new AVPlayer(item);
+            playerViewController.Player = _player;
+            this.SetNativeControl(playerViewController.View);
         }
     }
 }
