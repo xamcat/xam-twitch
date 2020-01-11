@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Text.RegularExpressions;
-using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.MobCAT.Services;
-using Newtonsoft.Json;
-using Xamarin.Essentials;
 using XamTwitch.Helpers;
 using XamTwitch.Models;
 
@@ -29,20 +24,6 @@ namespace XamTwitch.Services
         public Task<TwitchStreams> GetTwitchStreamsAsync()
         {
             return GetAsync<TwitchStreams>($"helix/streams");
-        }
-
-        public async Task<TwitchToken> GetTwitchTokenAsync(string userName)
-        {
-            if (string.IsNullOrWhiteSpace(userName))
-            {
-                throw new ArgumentException(nameof(userName));
-            }
-
-            System.Diagnostics.Debug.WriteLine($"{Thread.CurrentThread.ManagedThreadId}, IsMain: {MainThread.IsMainThread}");
-            var channelName = userName.ToLower();
-            var url = $"api/channels/{channelName}/access_token";
-            var token = await GetAsync<TwitchToken>(url);
-            return token;
         }
     }
 }
