@@ -4,9 +4,6 @@ namespace XamTwitch
 {
     public static class Constants
     {
-        // Hardcoded anonymous ClientId used by Twitch
-        public const string TwitchAnonymousClientId = "kimne78kx3ncx6brgo4mv6wki5h1ko";
-
         // dev.twitch.tv application settings
         public const string TwitchApiKey = "<TWITCH_CLIENT_ID>";
         public const string TwitchApiUri = "https://api.twitch.tv/";
