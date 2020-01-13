@@ -103,6 +103,11 @@ stages:
         restoreSolution: 'XamTwitch/XamTwitch.sln'
         feedsToUse: 'config'
         nugetConfigPath: 'build/Nuget.config'
+
+    - task: InstallAppleProvisioningProfile@1
+      inputs:
+        provisioningProfileLocation: 'secureFiles'
+        provProfileSecureFile: 'VS_WildCard_Development.mobileprovision'
         
     - task: MSBuild@1
       displayName: 'Build  Xamarin.iOS App'

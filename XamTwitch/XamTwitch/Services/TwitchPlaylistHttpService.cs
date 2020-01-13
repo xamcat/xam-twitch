@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.MobCAT.Services;
-using XamTwitch.Helpers;
 using XamTwitch.Models;
 
 namespace XamTwitch.Services
@@ -16,7 +14,7 @@ namespace XamTwitch.Services
         {
             Serializer = new TwitchPlaylistSerializer();
         }
-        
+
         public async Task<string> GetPlaylistUriAsync(string userName, TwitchToken token)
         {
             if (string.IsNullOrWhiteSpace(userName) || token == null ||  string.IsNullOrWhiteSpace(token.Sig) || string.IsNullOrWhiteSpace(token.Token))

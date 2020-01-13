@@ -17,6 +17,7 @@ namespace XamTwitch
 
             ServiceContainer.Register<INavigationService>(navigationService);
             ServiceContainer.Register<ITwitchHttpService>(new TwitchHttpService());
+            ServiceContainer.Register<ITwitchAnonymousHttpService>(new TwitchAnonymousHttpService());
             ServiceContainer.Register<ITwitchPlaylistHttpService>(new TwitchPlaylistHttpService());
             ServiceContainer.Register<ITwitchAuthHttpService>(new TwitchAuthHttpService());
             platformSpecificBegin?.Invoke();

@@ -41,7 +41,7 @@ namespace XamTwitch.ViewModels
 
         public override async Task InitAsync()
         {
-            var gamesResult = await _twitchHttpService.GetTwitchStreamsAsync().ConfigureAwait(false);
+            var gamesResult = await _twitchHttpService.GetTwitchStreamsAsync();
             Streams = new ObservableCollection<TwitchStream>(gamesResult.Data);
         }
     }

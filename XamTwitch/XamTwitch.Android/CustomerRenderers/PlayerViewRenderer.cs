@@ -36,21 +36,10 @@ namespace XamTwitch.Droid.CustomerRenderers
             {
                 _videoView = new VideoView(Context);
                 var relativeLayout = new ARelativeLayout(Context);
-                //var tmpControl = new TextView(Context)
-                //{
-                //    Text = "My Custom Video Player Here",
-                //    Background = new ColorDrawable(Android.Graphics.Color.Red),
-                //    TextSize = 64f,
-                //};
-                //relativeLayout.AddView(tmpControl);
                 relativeLayout.AddView(_videoView);
-
                 var layoutParams = new ARelativeLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent);
                 layoutParams.AddRule(LayoutRules.CenterInParent);
-                //tmpControl.LayoutParameters = layoutParams;
-
                 _videoView.LayoutParameters = layoutParams;
-
                 _mediaController = new MediaController(Context);
                 _mediaController.SetMediaPlayer(_videoView);
                 _videoView.SetMediaController(_mediaController);
