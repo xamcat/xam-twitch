@@ -1,14 +1,12 @@
-using System;
-
 namespace XamTwitch
 {
-    public static class Constants
+    public static partial class Constants
     {
         // dev.twitch.tv application settings
-        public const string TwitchApiKey = "<TWITCH_CLIENT_ID>";
-        public const string TwitchApiUri = "https://api.twitch.tv/";
-        public const string TwitchPlaylistApiUri = "https://usher.ttvnw.net/";
-        public const string ClientIDHeaderKey = "Client-ID";
+        public static string TwitchApiKey = "<TWITCH_CLIENT_ID>";
+        public static string TwitchApiUri = "https://api.twitch.tv/";
+        public static string TwitchPlaylistApiUri = "https://usher.ttvnw.net/";
+        public static string ClientIDHeaderKey = "Client-ID";
         public static string AppName = "XamTwitch";
 
         // OAuth
