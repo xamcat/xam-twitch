@@ -20,5 +20,7 @@ namespace XamTwitch
         // Set these to reversed iOS/Android client ids, with :/oauth2redirect appended
         public static string iOSRedirectUrl = "https://localhost:/oauth2redirect";
         public static string AndroidRedirectUrl = "https://localhost:/oauth2redirect";
+
+        public const string CurrentUserId = "current_user_id";
     }
 }

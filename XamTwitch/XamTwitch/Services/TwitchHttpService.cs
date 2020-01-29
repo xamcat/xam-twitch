@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.MobCAT.Services;
 using XamTwitch.Helpers;
@@ -16,6 +15,12 @@ namespace XamTwitch.Services
             Serializer = new NewtonsoftJsonSerializer();
         }
 
+        public Task<TwitchChannelFollows> GetChannelFollowsAsync(string userId)
+            => GetAsync<TwitchChannelFollows>($"helix/users/follows?from_id={userId}");
+
+        public Task<TwitchUser> GetProfileAsync(string userId)
+            => GetAsync<TwitchUser>($"helix/users?id={userId}");
+
         public Task<TwitchGames> GetTwitchGamesAsync(string gameName)
         {
             return GetAsync<TwitchGames>($"helix/games?name={gameName}");
@@ -25,5 +30,8 @@ namespace XamTwitch.Services
         {
             return GetAsync<TwitchStreams>($"helix/streams");
         }
+
+        public Task<TwitchUserVideos> GetUserVideosAsync(string userId)
+            => GetAsync<TwitchUserVideos>($"helix/videos?user_id={userId}");
     }
 }

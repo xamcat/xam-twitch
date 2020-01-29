@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using XamTwitch.Models;
 
 namespace XamTwitch.Services
@@ -9,5 +6,7 @@ namespace XamTwitch.Services
     public interface ITwitchAuthHttpService
     {
         Task<TwitchUser> GetUserAsync();
+        ValueTask<string> GetCurrentUserIdAsync();
+        void ClearCurrentUser();
     }
 }
