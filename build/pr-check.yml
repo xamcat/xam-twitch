@@ -16,18 +16,17 @@ stages:
     steps:
     - script: echo Build Xamarin Android Stage!
 
+    - task: Bash@3
+      displayName: 'Set Mono Version 6.4.0'
+      inputs:
+        targetType: 'inline'
+        script: 'sudo $AGENT_HOMEDIRECTORY/scripts/select-xamarin-sdk.sh $(MonoVersion)'
+
     - task: UseDotNet@2
       displayName: 'Use .NET Core sdk'
       inputs:
         packageType: sdk
         version: $(DotNetVersion)
-
-    # - task: DownloadGitHubRelease@0
-    #   inputs:
-    #     connection: 'GitHub connection 6'
-    #     userRepository: 'xamcat/mobcat-library'
-    #     defaultVersionType: 'latest'
-    #     downloadPath: '$(System.DefaultWorkingDirectory)/Packages'
 
     - task: NuGetToolInstaller@1
       displayName: Use Nuget $(NugetToolVersion)
@@ -48,14 +47,6 @@ stages:
         nugetConfigPath: 'build/Nuget.config'
         externalFeedCredentials: 'GitHubPackageRelease'
 
-    # - task: DotNetCoreCLI@2
-    #   inputs:
-    #     command: 'restore'
-    #     projects: 'XamTwitch/XamTwitch.sln'
-    #     feedsToUse: 'config'
-    #     nugetConfigPath: 'build/Nuget.config'
-    #     externalFeedCredentials: 'GitHubPackageRelease'
-
     - task: XamarinAndroid@1
       displayName: 'Build Xamarin.Android App'
       inputs:
@@ -75,13 +66,6 @@ stages:
 
     steps:
     - script: echo Build Xamarin iOS Stage!
-
-    # - task: DownloadGitHubRelease@0
-    #   inputs:
-    #     connection: 'GitHub connection 6'
-    #     userRepository: 'xamcat/mobcat-library'
-    #     defaultVersionType: 'latest'
-    #     downloadPath: '$(System.DefaultWorkingDirectory)/Packages'
 
     - task: NuGetToolInstaller@1
       displayName: Use Nuget $(NugetToolVersion)
@@ -119,14 +103,6 @@ stages:
         feedsToUse: 'config'
         nugetConfigPath: 'build/Nuget.config'
         externalFeedCredentials: 'GitHubPackageRelease'
-
-    # - task: DotNetCoreCLI@2
-    #   inputs:
-    #     command: 'restore'
-    #     projects: 'XamTwitch/XamTwitch.sln'
-    #     feedsToUse: 'config'
-    #     nugetConfigPath: 'build/Nuget.config'
-    #     externalFeedCredentials: 'GitHubPackageRelease'
 
     - task: InstallAppleProvisioningProfile@1
       inputs:
