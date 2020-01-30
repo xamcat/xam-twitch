@@ -40,12 +40,20 @@ stages:
         script: |
           nuget sources add -Name Local -Source "%BUILD_REPOSITORY_LOCALPATH%/LocalPackages"
 
-    - task: NuGetCommand@2
+    # - task: NuGetCommand@2
+    #   inputs:
+    #     command: 'restore'
+    #     restoreSolution: 'XamTwitch/XamTwitch.sln'
+    #     feedsToUse: 'config'
+    #     nugetConfigPath: 'build/Nuget.config'
+
+    - task: DotNetCoreCLI@2
       inputs:
         command: 'restore'
-        restoreSolution: 'XamTwitch/XamTwitch.sln'
+        projects: 'XamTwitch/XamTwitch.sln'
         feedsToUse: 'config'
         nugetConfigPath: 'build/Nuget.config'
+        externalFeedCredentials: 'GitHubPackageRelease'
 
     - task: XamarinAndroid@1
       displayName: 'Build Xamarin.Android App'
@@ -103,12 +111,20 @@ stages:
         targetType: 'inline'
         script: '/bin/bash -c "echo ''##vso[task.setvariable variable=MD_APPLE_SDK_ROOT;]''$(xcodeRoot);sudo xcode-select --switch $(xcodeRoot)/Contents/Developer"'
 
-    - task: NuGetCommand@2
+    # - task: NuGetCommand@2
+    #   inputs:
+    #     command: 'restore'
+    #     restoreSolution: 'XamTwitch/XamTwitch.sln'
+    #     feedsToUse: 'config'
+    #     nugetConfigPath: 'build/Nuget.config'
+
+    - task: DotNetCoreCLI@2
       inputs:
         command: 'restore'
-        restoreSolution: 'XamTwitch/XamTwitch.sln'
+        projects: 'XamTwitch/XamTwitch.sln'
         feedsToUse: 'config'
         nugetConfigPath: 'build/Nuget.config'
+        externalFeedCredentials: 'GitHubPackageRelease'
 
     - task: InstallAppleProvisioningProfile@1
       inputs:
