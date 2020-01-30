@@ -24,9 +24,9 @@ stages:
     #     downloadPath: '$(System.DefaultWorkingDirectory)/Packages'
 
     - task: NuGetToolInstaller@1
-      displayName: Use Nuget 5.0.2
+      displayName: Use Nuget $(NugetToolVersion)
       inputs:
-        versionSpec: '5.0.2'
+        versionSpec: $(NugetToolVersion)
 
     - task: Bash@3
       inputs:
@@ -69,9 +69,9 @@ stages:
     #     downloadPath: '$(System.DefaultWorkingDirectory)/Packages'
 
     - task: NuGetToolInstaller@1
-      displayName: Use Nuget 5.0.2
+      displayName: Use Nuget $(NugetToolVersion)
       inputs:
-        versionSpec: '5.0.2'
+        versionSpec: $(NugetToolVersion)
 
     - task: UseDotNet@2
       displayName: 'Set .NET Version set 3.0.x'
