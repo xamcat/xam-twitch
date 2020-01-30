@@ -16,6 +16,12 @@ stages:
     steps:
     - script: echo Build Xamarin Android Stage!
 
+    - task: UseDotNet@2
+      displayName: 'Use .NET Core sdk'
+      inputs:
+        packageType: sdk
+        version: $(DotNetVersion)
+
     # - task: DownloadGitHubRelease@0
     #   inputs:
     #     connection: 'GitHub connection 6'
@@ -74,10 +80,10 @@ stages:
         versionSpec: $(NugetToolVersion)
 
     - task: UseDotNet@2
-      displayName: 'Set .NET Version set 3.0.x'
+      displayName: 'Use .NET Core sdk'
       inputs:
-        packageType: 'sdk'
-        version: '3.0.x'
+        packageType: sdk
+        version: $(DotNetVersion)
 
     - task: Bash@3
       displayName: 'Set Mono Version 6.4.0'
