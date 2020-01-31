@@ -1,4 +1,5 @@
-﻿using Microsoft.MobCAT.MVVM;
+﻿using Microsoft.MobCAT;
+using Microsoft.MobCAT.MVVM;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -49,6 +50,7 @@ namespace XamTwitch.ViewModels
             presenter.Login(authenticator);
         }
 
+        // TODO: Clean up async/void - Sweeky! ;-)
         async void OnAuthCompleted(object sender, AuthenticatorCompletedEventArgs e)
         {
             var authenticator = sender as OAuth2Authenticator;

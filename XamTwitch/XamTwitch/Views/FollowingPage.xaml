@@ -5,5 +5,18 @@
     x:Class="XamTwitch.Views.FollowingPage"
     xmlns:local="clr-namespace:Microsoft.MobCAT.Forms.Pages;assembly=MobCAT.Forms"
     xmlns:vm="clr-namespace:XamTwitch.ViewModels"
+    x:DataType="vm:FollowingPageViewModel"
     x:TypeArguments="vm:FollowingPageViewModel">
+
+    <CollectionView ItemsSource="{Binding Follows}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="vm:ChannelFollowViewModel">
+                <StackLayout>
+                    <Label Text="{Binding Username}" />
+                    <Label Text="{Binding NewVideos}" />
+                </StackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+
 </local:BaseContentPage>

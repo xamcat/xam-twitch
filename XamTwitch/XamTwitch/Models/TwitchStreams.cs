@@ -53,12 +53,6 @@ namespace XamTwitch.Models
         public List<Guid> TagIds { get; set; }
     }
 
-    public class Pagination
-    {
-        [JsonProperty("cursor")]
-        public string Cursor { get; set; }
-    }
-
     public enum TypeEnum { Live };
 }
 

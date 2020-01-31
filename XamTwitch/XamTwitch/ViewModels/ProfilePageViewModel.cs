@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.MobCAT;
 using Microsoft.MobCAT.MVVM;
@@ -8,7 +7,6 @@ using Newtonsoft.Json;
 using Xamarin.Auth;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using XamTwitch.Helpers;
 using XamTwitch.Services;
 
 namespace XamTwitch.ViewModels
@@ -37,20 +35,21 @@ namespace XamTwitch.ViewModels
             }
         }
         
-        public Microsoft.MobCAT.MVVM.Command LogoutCommand { get; }
+        public AsyncCommand LogoutCommand { get; }
         public ProfilePageViewModel()
         {
             _twitchAuthHttpService = ServiceContainer.Resolve<ITwitchAuthHttpService>();
-            LogoutCommand = new Microsoft.MobCAT.MVVM.Command(Logout);
+            LogoutCommand = new AsyncCommand(Logout);
             UserName = "Username Incoming";
             ProfileImageSource = ImageSource.FromUri(new Uri("https://static-cdn.jtvnw.net/user-default-pictures-uv/215b7342-def9-11e9-9a66-784f43822e80-profile_image-70x70.png"));
 
         }
-        
-        public async void Logout()
+
+        public Task Logout()
         {
             SecureStorage.Remove(Constants.AppName);
-            await Shell.Current.GoToAsync("//login");
+            _twitchAuthHttpService.ClearCurrentUser();
+            return Shell.Current.GoToAsync("//login");
         }
 
         public async override Task InitAsync()
